@@ -17,9 +17,7 @@ public partial class CardChain : PanelContainer
 
     public override void _DropData(Vector2 atPosition, Variant data)
     {
-        var card = data.As<Card>();
-        card.GetParent().RemoveChild(card);
-        cardChain.AddChild(card);
+        data.As<Card>().MoveTo(cardChain);
     }
 
 }

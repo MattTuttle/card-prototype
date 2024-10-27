@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DeckResource" load_steps=5 format=3 uid="uid://cdhrru1vnbqnf"]
+
+[ext_resource type="Resource" uid="uid://jbrllrxv8s70" path="res://resources/card/dagger.tres" id="1_vs0jv"]
+[ext_resource type="Resource" uid="uid://vxv4dhrqm8t6" path="res://resources/card/fireball.tres" id="2_qsuk2"]
+[ext_resource type="Resource" uid="uid://d077o8yf48c27" path="res://resources/card/sword.tres" id="3_evdfi"]
+[ext_resource type="Script" path="res://resources/deck/DeckResource.cs" id="4_8mg16"]
+
+[resource]
+script = ExtResource("4_8mg16")
+cardsInDeck = Array[Object]([ExtResource("1_vs0jv"), ExtResource("2_qsuk2"), ExtResource("3_evdfi")])

@@ -1,17 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://batdgudkkr2se"]
+[gd_scene load_steps=4 format=3 uid="uid://batdgudkkr2se"]
 
 [ext_resource type="PackedScene" uid="uid://cs08xuoqp71r0" path="res://scenes/card/Card.tscn" id="1_8c6up"]
 [ext_resource type="Script" path="res://scenes/battle/Hand.cs" id="1_jp1aj"]
-[ext_resource type="Resource" uid="uid://vxv4dhrqm8t6" path="res://resources/card/fireball.tres" id="2_wg4tj"]
-[ext_resource type="Resource" uid="uid://jbrllrxv8s70" path="res://resources/card/dagger.tres" id="3_4pj1t"]
-[ext_resource type="Resource" uid="uid://d077o8yf48c27" path="res://resources/card/sword.tres" id="4_s5her"]
+[ext_resource type="Resource" uid="uid://cdhrru1vnbqnf" path="res://resources/deck/starter_deck.tres" id="2_1fmpd"]
 
 [node name="Hand" type="PanelContainer"]
 offset_right = 32.0
 offset_bottom = 32.0
 size_flags_horizontal = 0
 script = ExtResource("1_jp1aj")
-cardsInDeck = Array[Object]([ExtResource("2_wg4tj"), ExtResource("3_4pj1t"), ExtResource("4_s5her")])
+cardDeck = ExtResource("2_1fmpd")
 cardScene = ExtResource("1_8c6up")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -22,16 +20,24 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Your Hand"
 
-[node name="HandContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HandContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 8
+
+[node name="DrawCardButton" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Draw Card"

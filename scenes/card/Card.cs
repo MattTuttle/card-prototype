@@ -26,10 +26,15 @@ public partial class Card : PanelContainer
 
     public void AssignResource(CardResource cardResource)
     {
-        GD.Print(cardResource.DisplayName);
         nameLabel.Text = cardResource.DisplayName;
         powerLabel.Text = $"{cardResource.Power}";
         this.cardResource = cardResource;
+    }
+
+    public void MoveTo(Node newParent)
+    {
+        GetParent().RemoveChild(this);
+        newParent.AddChild(this);
     }
 
     public override Variant _GetDragData(Vector2 atPosition)
@@ -47,9 +52,8 @@ public partial class Card : PanelContainer
 
     public override void _DropData(Vector2 atPosition, Variant data)
     {
-        var card = data.As<Card>();
-        card.GetParent().RemoveChild(card);
-        GetParent().AddChild(card);
+        // move to parent of the card we dropped on
+        data.As<Card>().MoveTo(GetParent());
     }
 
 }
