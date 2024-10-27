@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://diyp1o81al2y4"]
+
+[ext_resource type="Script" path="res://scenes/battle/CardChain.cs" id="1_4toun"]
+
+[node name="CardChain" type="PanelContainer"]
+offset_right = 122.0
+offset_bottom = 63.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_4toun")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Card Chain"
+
+[node name="ChainContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 32
+
+[node name="CardChain" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ChainContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="AttackButton" type="Button" parent="MarginContainer/VBoxContainer/ChainContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Attack"

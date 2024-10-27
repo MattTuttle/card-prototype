@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://cs08xuoqp71r0"]
+
+[ext_resource type="Texture2D" uid="uid://c4dmcmwf761d5" path="res://assets/elements/elements_outline.png" id="1_4q0he"]
+[ext_resource type="Script" path="res://scenes/card/Card.cs" id="1_23kst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7sr7"]
+atlas = ExtResource("1_4q0he")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uae8i"]
+load_path = "res://.godot/imported/attrs_outline.png-076b839f6eb51dd0c87036a8a2db14d7.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4ta0"]
+atlas = SubResource("CompressedTexture2D_uae8i")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yr8f"]
+atlas = SubResource("CompressedTexture2D_uae8i")
+region = Rect2(16, 16, 16, 16)
+
+[node name="Card" type="PanelContainer"]
+script = ExtResource("1_23kst")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fireball"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_f7sr7")
+
+[node name="Attributes" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PowerValue" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Attributes"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Attributes/PowerValue"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_b4ta0")
+stretch_mode = 3
+
+[node name="PowerLabel" type="Label" parent="MarginContainer/VBoxContainer/Attributes/PowerValue"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+3"
+
+[node name="ArmorValue" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Attributes"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Attributes/ArmorValue"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8yr8f")
+stretch_mode = 3
+
+[node name="ArmorLabel" type="Label" parent="MarginContainer/VBoxContainer/Attributes/ArmorValue"]
+layout_mode = 2
+text = "0"
+
+[node name="FinaleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Finale:
+Fire Attack"
