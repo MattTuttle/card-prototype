@@ -5,7 +5,7 @@ namespace Game.Scenes.Card;
 
 public partial class Card : PanelContainer
 {
-    private CardResource cardResource;
+    public CardResource CardResource { get; private set; }
 
     private Label nameLabel;
     private Label powerLabel;
@@ -28,7 +28,7 @@ public partial class Card : PanelContainer
     {
         nameLabel.Text = cardResource.DisplayName;
         powerLabel.Text = $"{cardResource.Power}";
-        this.cardResource = cardResource;
+        CardResource = cardResource;
     }
 
     public void MoveTo(Node newParent)
