@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl0w8t3ifb4"]
+[gd_scene load_steps=4 format=3 uid="uid://bl0w8t3ifb4"]
 
+[ext_resource type="PackedScene" uid="uid://c4f1ylvbfjwg7" path="res://scenes/actor/Actor.tscn" id="1_t5pxu"]
 [ext_resource type="PackedScene" uid="uid://diyp1o81al2y4" path="res://scenes/battle/CardChain.tscn" id="1_ys16k"]
 [ext_resource type="PackedScene" uid="uid://batdgudkkr2se" path="res://scenes/battle/Hand.tscn" id="2_y48mq"]
 
 [node name="BattleScene" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_t5pxu")]
+
+[node name="Enemy" parent="." instance=ExtResource("1_t5pxu")]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
