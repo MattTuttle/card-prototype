@@ -3,13 +3,36 @@ using System;
 
 public partial class HealthComponent : Node
 {
-    private int health;
-    private int maxHealth;
+    [Signal]
+    public delegate void HealthChangedEventHandler(int health);
+
+    [Signal]
+    public delegate void DiedEventHandler();
+
+    public bool IsAlive => health > 0;
+
+    // get percentage of remaining health [0-1]
+    public float PercentRemaining => maxHealth == 0 ? 0 : (health / (float)maxHealth);
 
     [Export]
     public int Health {
         get { return health; }
-        private set { health = value; EmitSignal(SignalName.HealthChanged, value); }
+        private set {
+            var newHealth = Math.Clamp(value, 0, maxHealth);
+
+            if (health != newHealth)
+            {
+                health = newHealth;
+                if (IsAlive)
+                {
+                    EmitSignal(SignalName.HealthChanged, Health);
+                }
+                else
+                {
+                    EmitSignal(SignalName.Died);
+                }
+            }
+        }
     }
 
     public int MaxHealth {
@@ -17,35 +40,28 @@ public partial class HealthComponent : Node
         set {
             maxHealth = value;
             if (Health > maxHealth) {
-                Health = maxHealth;
-                EmitSignal(SignalName.HealthChanged, Health);
+                Health = maxHealth; // change property not private
             }
         }
     }
 
-    [Signal]
-    public delegate void HealthChangedEventHandler(int health);
-
-    [Signal]
-    public delegate void DiedEventHandler();
+    private int health;
+    private int maxHealth;
 
     public override void _Ready()
     {
         maxHealth = health;
     }
 
-    public void Change(int amount)
+    public void Damage(int amount)
     {
-        Health = Math.Clamp(health + amount, 0, maxHealth);
-        if (IsAlive)
-        {
-            EmitSignal(SignalName.HealthChanged, Health);
-        }
-        else
-        {
-            EmitSignal(SignalName.Died);
-        }
+        // assume negative amounts are positive damage
+        Health -= Math.Abs(amount);
     }
 
-    public bool IsAlive => Health > 0;
+    public void FullHeal()
+    {
+        Health = maxHealth;
+    }
+
 }
