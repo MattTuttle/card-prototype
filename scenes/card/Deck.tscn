@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ql0bbuuy5hd"]
-
-[ext_resource type="Script" path="res://resources/deck/DeckResource.cs" id="1_b7e8q"]
-
-[node name="Deck" type="Node"]
-script = ExtResource("1_b7e8q")

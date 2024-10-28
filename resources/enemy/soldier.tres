@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://biaondu2i75nh"]
+
+[ext_resource type="Script" path="res://resources/enemy/EnemyResource.cs" id="1_sktb8"]
+
+[resource]
+script = ExtResource("1_sktb8")
+DisplayName = "Soldier"
+Power = 5
