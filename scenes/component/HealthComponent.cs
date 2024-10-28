@@ -14,7 +14,6 @@ public partial class HealthComponent : Node
     // get percentage of remaining health [0-1]
     public float PercentRemaining => maxHealth == 0 ? 0 : (health / (float)maxHealth);
 
-    [Export]
     public int Health {
         get { return health; }
         private set {
@@ -35,6 +34,7 @@ public partial class HealthComponent : Node
         }
     }
 
+    [Export]
     public int MaxHealth {
         get { return maxHealth; }
         set {
@@ -46,11 +46,11 @@ public partial class HealthComponent : Node
     }
 
     private int health;
-    private int maxHealth;
+    private int maxHealth = 1;
 
     public override void _Ready()
     {
-        maxHealth = health;
+        health = maxHealth;
     }
 
     public void Damage(int amount)

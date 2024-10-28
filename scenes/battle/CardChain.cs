@@ -4,14 +4,14 @@ using Game.Scenes.Card;
 public partial class CardChain : PanelContainer
 {
     private HBoxContainer cardChain;
-    private Button attackButton;
+    private Button executeButton;
 
     public override void _Ready()
     {
         cardChain = GetNode<HBoxContainer>("%CardChain");
-        attackButton = GetNode<Button>("%AttackButton");
+        executeButton = GetNode<Button>("%ExecuteButton");
 
-        attackButton.Pressed += OnAttackPressed;
+        executeButton.Pressed += OnExecutePressed;
     }
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
@@ -32,7 +32,7 @@ public partial class CardChain : PanelContainer
         }
     }
 
-    private void OnAttackPressed()
+    private void OnExecutePressed()
     {
         int power = 0;
         foreach (var child in cardChain.GetChildren())

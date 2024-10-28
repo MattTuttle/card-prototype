@@ -7,4 +7,4 @@
 script = ExtResource("1_jlp8a")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_2t2rs")]
-Health = 10
+MaxHealth = 10
