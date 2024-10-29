@@ -22,11 +22,8 @@ public partial class HealthComponent : Node
             if (health != newHealth)
             {
                 health = newHealth;
-                if (IsAlive)
-                {
-                    EmitSignal(SignalName.HealthChanged, Health);
-                }
-                else
+                EmitSignal(SignalName.HealthChanged, Health);
+                if (!IsAlive)
                 {
                     EmitSignal(SignalName.Died);
                 }

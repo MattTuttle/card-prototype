@@ -41,8 +41,9 @@ layout_mode = 2
 enemyHealthComponent = NodePath("../../../Enemy/HealthComponent")
 playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
-[node name="HandContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_y48mq")]
+[node name="HandContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("playerHealthComponent") instance=ExtResource("2_y48mq")]
 layout_mode = 2
+playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
 [connection signal="ExecuteChain" from="MarginContainer/VBoxContainer/CardChainContainer" to="MarginContainer/VBoxContainer/HandContainer" method="OnExecuteChain"]
 

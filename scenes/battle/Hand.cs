@@ -17,6 +17,9 @@ public partial class Hand : PanelContainer
     [Export]
     private PackedScene cardScene;
 
+    [Export]
+    private HealthComponent playerHealthComponent;
+
     private HBoxContainer handContainer;
 
     public override void _Ready()
@@ -56,6 +59,7 @@ public partial class Hand : PanelContainer
     private void OnExecuteChain()
     {
         if (NumCardsInHand() == 0) {
+            playerHealthComponent.Damage(2); // really stupid enemy damage
             EmitSignal(SignalName.EndTurn);
             DrawToHandLimit();
         }
