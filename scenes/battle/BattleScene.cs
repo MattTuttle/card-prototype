@@ -21,7 +21,7 @@ public partial class BattleScene : Node
         playerHealthComponent = GetNode<HealthComponent>("Player/HealthComponent");
         enemyHealthComponent = GetNode<HealthComponent>("Enemy/HealthComponent");
 
-        cardChain.ExecuteChain += OnExecuteChain;
+        cardChain.OnChainExecuted += OnChainExecuted;
     }
 
     private void OnEndTurn()
@@ -29,7 +29,7 @@ public partial class BattleScene : Node
         hand.DrawToHandLimit();
     }
 
-    private void OnExecuteChain()
+    private void OnChainExecuted()
     {
         if (enemyHealthComponent.IsAlive) {
             if (hand.NumCardsInHand == 0) {

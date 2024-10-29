@@ -44,12 +44,14 @@ theme_override_constants/separation = 64
 [node name="CardChainContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("enemyHealthComponent", "playerHealthComponent") instance=ExtResource("1_ys16k")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 enemyHealthComponent = NodePath("../../../Enemy/HealthComponent")
 playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
 [node name="HandContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("playerHealthComponent") instance=ExtResource("2_y48mq")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
 [editable path="Player"]

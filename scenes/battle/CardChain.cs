@@ -1,11 +1,12 @@
 using Godot;
 using Game.Scenes.Card;
+using Game.Resources.Card;
 using Game.Component;
 
 public partial class CardChain : PanelContainer
 {
     [Signal]
-    public delegate void ExecuteChainEventHandler();
+    public delegate void OnChainExecutedEventHandler();
 
     [Export]
     private HealthComponent enemyHealthComponent;
@@ -41,20 +42,41 @@ public partial class CardChain : PanelContainer
         }
     }
 
+    private void ExecuteCardAction(CardActionType action, int power)
+    {
+        switch (action)
+        {
+            case CardActionType.Attack:
+                enemyHealthComponent.Damage(power);
+                GD.Print($"Swing at enemy for {power}");
+                break;
+            case CardActionType.Heal:
+                playerHealthComponent.Heal(power);
+                GD.Print($"Heal for {power}");
+                break;
+        }
+        EmitSignal(SignalName.OnChainExecuted);
+    }
+
     private void OnExecutePressed()
     {
         int power = 0;
-        foreach (var child in cardChain.GetChildren())
+        var cards = cardChain.GetChildren();
+        if (cards.Count == 0) return;
+
+        for (int i = 0; i < cards.Count; i++)
         {
-            if (child is Card card)
+            if (cards[i] is Card card)
             {
                 power += card.CardResource.Power;
+                if (i == cards.Count - 1)
+                {
+                    // last card
+                    ExecuteCardAction(card.CardResource.FinalAction, power);
+                }
             }
         }
-        //playerHealthComponent.Heal(power);
-        enemyHealthComponent.Damage(power);
         ClearCards();
-        EmitSignal(SignalName.ExecuteChain);
     }
 
 }

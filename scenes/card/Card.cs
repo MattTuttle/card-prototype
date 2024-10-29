@@ -9,11 +9,13 @@ public partial class Card : PanelContainer
 
     private Label nameLabel;
     private Label powerLabel;
+    private Label actionLabel;
 
     public override void _Ready()
     {
         nameLabel = GetNode<Label>("%NameLabel");
         powerLabel = GetNode<Label>("%PowerLabel");
+        actionLabel = GetNode<Label>("%ActionLabel");
     }
 
     public override void _Notification(int what)
@@ -28,6 +30,7 @@ public partial class Card : PanelContainer
     {
         nameLabel.Text = cardResource.DisplayName;
         powerLabel.Text = $"{cardResource.Power}";
+        actionLabel.Text = $"Action:\n{cardResource.FinalAction}";
         CardResource = cardResource;
     }
 
