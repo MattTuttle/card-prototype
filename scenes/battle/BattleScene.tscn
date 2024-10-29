@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bl0w8t3ifb4"]
+[gd_scene load_steps=5 format=3 uid="uid://bl0w8t3ifb4"]
 
+[ext_resource type="Script" path="res://scenes/battle/BattleScene.cs" id="1_r6il6"]
 [ext_resource type="PackedScene" uid="uid://c4f1ylvbfjwg7" path="res://scenes/actor/Actor.tscn" id="1_t5pxu"]
 [ext_resource type="PackedScene" uid="uid://diyp1o81al2y4" path="res://scenes/battle/CardChain.tscn" id="1_ys16k"]
 [ext_resource type="PackedScene" uid="uid://batdgudkkr2se" path="res://scenes/battle/Hand.tscn" id="2_y48mq"]
 
 [node name="BattleScene" type="Node"]
+script = ExtResource("1_r6il6")
 
 [node name="Player" parent="." instance=ExtResource("1_t5pxu")]
 
@@ -15,6 +17,9 @@ offset_right = 646.0
 offset_bottom = 373.0
 
 [node name="Enemy" parent="." instance=ExtResource("1_t5pxu")]
+
+[node name="HealthComponent" parent="Enemy" index="0"]
+MaxHealth = 25
 
 [node name="Label" parent="Enemy" index="1"]
 offset_left = 591.0
@@ -37,15 +42,15 @@ size_flags_vertical = 4
 theme_override_constants/separation = 64
 
 [node name="CardChainContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("enemyHealthComponent", "playerHealthComponent") instance=ExtResource("1_ys16k")]
+unique_name_in_owner = true
 layout_mode = 2
 enemyHealthComponent = NodePath("../../../Enemy/HealthComponent")
 playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
 [node name="HandContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("playerHealthComponent") instance=ExtResource("2_y48mq")]
+unique_name_in_owner = true
 layout_mode = 2
 playerHealthComponent = NodePath("../../../Player/HealthComponent")
-
-[connection signal="ExecuteChain" from="MarginContainer/VBoxContainer/CardChainContainer" to="MarginContainer/VBoxContainer/HandContainer" method="OnExecuteChain"]
 
 [editable path="Player"]
 [editable path="Enemy"]

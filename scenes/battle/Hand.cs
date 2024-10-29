@@ -26,12 +26,10 @@ public partial class Hand : PanelContainer
     {
         handContainer = GetNode<HBoxContainer>("%HandContainer");
 
-        Callable.From(() => {
-                DrawToHandLimit();
-            }).CallDeferred();
-
         var drawCardButton = GetNode<Button>("%DrawCardButton");
         drawCardButton.Pressed += DrawCard;
+
+        Callable.From(DrawToHandLimit).CallDeferred();
     }
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
@@ -51,23 +49,11 @@ public partial class Hand : PanelContainer
         card.AssignResource(cardResource);
     }
 
-    private int NumCardsInHand()
-    {
-        return handContainer.GetChildren().Count;
-    }
+    public int NumCardsInHand => handContainer.GetChildren().Count;
 
-    private void OnExecuteChain()
+    public void DrawToHandLimit()
     {
-        if (NumCardsInHand() == 0) {
-            playerHealthComponent.Damage(2); // really stupid enemy damage
-            EmitSignal(SignalName.EndTurn);
-            DrawToHandLimit();
-        }
-    }
-
-    private void DrawToHandLimit()
-    {
-        for (int i = NumCardsInHand(); i < HandLimit; i++)
+        for (int i = NumCardsInHand; i < HandLimit; i++)
         {
             DrawCard();
         }
