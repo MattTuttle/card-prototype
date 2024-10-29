@@ -3,6 +3,14 @@ using Game.Scenes.Card;
 
 public partial class CardChain : PanelContainer
 {
+    [Signal]
+    public delegate void ExecuteChainEventHandler();
+
+    [Export]
+    private HealthComponent enemyHealthComponent;
+    [Export]
+    private HealthComponent playerHealthComponent;
+
     private HBoxContainer cardChain;
     private Button executeButton;
 
@@ -42,8 +50,10 @@ public partial class CardChain : PanelContainer
                 power += card.CardResource.Power;
             }
         }
-        GD.Print($"Attack for {power}");
+        //playerHealthComponent.Heal(power);
+        enemyHealthComponent.Damage(power);
         ClearCards();
+        EmitSignal(SignalName.ExecuteChain);
     }
 
 }

@@ -55,8 +55,13 @@ public partial class HealthComponent : Node
 
     public void Damage(int amount)
     {
-        // assume negative amounts are positive damage
+        // assume negative and positive amounts are the same
         Health -= Math.Abs(amount);
+    }
+
+    public void Heal(int amount)
+    {
+        Health += Math.Abs(amount);
     }
 
     public void FullHeal()

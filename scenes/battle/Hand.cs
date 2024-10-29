@@ -7,10 +7,15 @@ namespace Game.Battle;
 
 public partial class Hand : PanelContainer
 {
+    [Signal]
+    public delegate void EndTurnEventHandler();
+
     [Export]
-    public DeckResource cardDeck;
+    public int HandLimit = 5;
     [Export]
-    public PackedScene cardScene;
+    private DeckResource cardDeck;
+    [Export]
+    private PackedScene cardScene;
 
     private HBoxContainer handContainer;
 
@@ -19,11 +24,11 @@ public partial class Hand : PanelContainer
         handContainer = GetNode<HBoxContainer>("%HandContainer");
 
         Callable.From(() => {
-                OnDrawCardPressed();
+                DrawToHandLimit();
             }).CallDeferred();
 
         var drawCardButton = GetNode<Button>("%DrawCardButton");
-        drawCardButton.Pressed += OnDrawCardPressed;
+        drawCardButton.Pressed += DrawCard;
     }
 
     public override bool _CanDropData(Vector2 atPosition, Variant data)
@@ -43,7 +48,28 @@ public partial class Hand : PanelContainer
         card.AssignResource(cardResource);
     }
 
-    private void OnDrawCardPressed()
+    private int NumCardsInHand()
+    {
+        return handContainer.GetChildren().Count;
+    }
+
+    private void OnExecuteChain()
+    {
+        if (NumCardsInHand() == 0) {
+            EmitSignal(SignalName.EndTurn);
+            DrawToHandLimit();
+        }
+    }
+
+    private void DrawToHandLimit()
+    {
+        for (int i = NumCardsInHand(); i < HandLimit; i++)
+        {
+            DrawCard();
+        }
+    }
+
+    private void DrawCard()
     {
         PlaceCardInHand(cardDeck.DrawCard());
     }

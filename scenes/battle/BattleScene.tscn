@@ -8,7 +8,19 @@
 
 [node name="Player" parent="." instance=ExtResource("1_t5pxu")]
 
+[node name="Label" parent="Player" index="1"]
+offset_left = 606.0
+offset_top = 350.0
+offset_right = 646.0
+offset_bottom = 373.0
+
 [node name="Enemy" parent="." instance=ExtResource("1_t5pxu")]
+
+[node name="Label" parent="Enemy" index="1"]
+offset_left = 591.0
+offset_top = 43.0
+offset_right = 608.0
+offset_bottom = 66.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -16,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -23,8 +36,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 64
 
-[node name="ChainContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_ys16k")]
+[node name="CardChainContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("enemyHealthComponent", "playerHealthComponent") instance=ExtResource("1_ys16k")]
 layout_mode = 2
+enemyHealthComponent = NodePath("../../../Enemy/HealthComponent")
+playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
 [node name="HandContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_y48mq")]
 layout_mode = 2
+
+[connection signal="ExecuteChain" from="MarginContainer/VBoxContainer/CardChainContainer" to="MarginContainer/VBoxContainer/HandContainer" method="OnExecuteChain"]
+
+[editable path="Player"]
+[editable path="Enemy"]

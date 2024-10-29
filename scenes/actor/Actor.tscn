@@ -3,8 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://2fj0au6dsa2" path="res://scenes/component/HealthComponent.tscn" id="1_2t2rs"]
 [ext_resource type="Script" path="res://scenes/actor/Actor.cs" id="1_jlp8a"]
 
-[node name="Actor" type="Node"]
+[node name="Actor" type="Node2D"]
 script = ExtResource("1_jlp8a")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_2t2rs")]
 MaxHealth = 10
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HI"
