@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+namespace Game.Component;
+
 public partial class HealthComponent : Node
 {
     [Signal]

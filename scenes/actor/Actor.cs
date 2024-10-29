@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Game.Component;
 
 public partial class Actor : Node2D
 {

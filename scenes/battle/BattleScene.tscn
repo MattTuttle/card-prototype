@@ -19,7 +19,7 @@ offset_bottom = 373.0
 [node name="Enemy" parent="." instance=ExtResource("1_t5pxu")]
 
 [node name="HealthComponent" parent="Enemy" index="0"]
-MaxHealth = 25
+MaxHealth = 16
 
 [node name="Label" parent="Enemy" index="1"]
 offset_left = 591.0

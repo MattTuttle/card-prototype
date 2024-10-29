@@ -1,5 +1,6 @@
 using Godot;
 using Game.Scenes.Card;
+using Game.Component;
 
 public partial class CardChain : PanelContainer
 {

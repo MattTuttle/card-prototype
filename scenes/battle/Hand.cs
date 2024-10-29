@@ -1,4 +1,5 @@
 using Godot;
+using Game.Component;
 using Game.Resources.Card;
 using Game.Resources.Deck;
 using Game.Scenes.Card;
@@ -7,9 +8,6 @@ namespace Game.Battle;
 
 public partial class Hand : PanelContainer
 {
-    [Signal]
-    public delegate void EndTurnEventHandler();
-
     [Export]
     public int HandLimit = 5;
     [Export]
