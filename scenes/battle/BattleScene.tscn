@@ -10,32 +10,35 @@
 script = ExtResource("1_r6il6")
 
 [node name="Player" parent="." instance=ExtResource("1_t5pxu")]
-offset_left = 610.0
-offset_top = 446.0
-offset_right = 610.0
-offset_bottom = 446.0
+offset_left = 55.0
+offset_top = 626.0
+offset_right = 157.0
+offset_bottom = 665.0
 
-[node name="EnemyList" type="Control" parent="." node_paths=PackedStringArray("player")]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 7.0
-offset_top = -2.0
-offset_right = 47.0
-offset_bottom = 38.0
+[node name="EnemyMargin" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_right = 132.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 64
+
+[node name="EnemyList" type="HBoxContainer" parent="EnemyMargin" node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 60
 script = ExtResource("3_ds506")
-player = NodePath("../Player")
+player = NodePath("../../Player")
 
-[node name="Enemy1" parent="EnemyList" instance=ExtResource("1_t5pxu")]
-offset_left = 503.0
-offset_top = 105.0
-offset_right = 503.0
-offset_bottom = 105.0
+[node name="Enemy1" parent="EnemyMargin/EnemyList" instance=ExtResource("1_t5pxu")]
+layout_mode = 2
 
-[node name="Enemy2" parent="EnemyList" instance=ExtResource("1_t5pxu")]
-offset_left = 678.0
-offset_top = 105.0
-offset_right = 678.0
-offset_bottom = 105.0
+[node name="Enemy2" parent="EnemyMargin/EnemyList" instance=ExtResource("1_t5pxu")]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 7
@@ -60,7 +63,7 @@ theme_override_constants/separation = 64
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-enemyList = NodePath("../../../EnemyList")
+enemyList = NodePath("../../../EnemyMargin/EnemyList")
 playerHealthComponent = NodePath("../../../Player/HealthComponent")
 
 [node name="HandContainer" parent="MarginContainer/VBoxContainer" node_paths=PackedStringArray("playerHealthComponent") instance=ExtResource("2_y48mq")]

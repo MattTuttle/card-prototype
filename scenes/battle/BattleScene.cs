@@ -18,7 +18,7 @@ public partial class BattleScene : Node
         cardChain = GetNode<CardChain>("%CardChainContainer");
 
         player = GetNode<Actor>("Player");
-        enemyList = GetNode<EnemyList>("EnemyList");
+        enemyList = GetNode<EnemyList>("%EnemyList");
 
         cardChain.OnChainExecuted += OnChainExecuted;
     }

@@ -23,14 +23,25 @@ public partial class EnemyList : Control
             if (child is Actor enemy)
             {
                 result.Add(enemy);
+                enemy.Select += SetTarget;
                 // set active target if we don't already have one
                 if (activeTarget == null || activeTarget.HealthComponent.IsDead)
                 {
-                    activeTarget = enemy;
+                    SetTarget(enemy);
                 }
             }
         }
         enemies = result.ToArray();
+    }
+
+    private void SetTarget(Actor enemy)
+    {
+        if (activeTarget != null)
+        {
+            activeTarget.SetInactive();
+        }
+        activeTarget = enemy;
+        enemy.SetActive();
     }
 
     public void TakeTurn()
