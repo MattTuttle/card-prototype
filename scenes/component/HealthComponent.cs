@@ -11,7 +11,7 @@ public partial class HealthComponent : Node
     [Signal]
     public delegate void DiedEventHandler();
 
-    public bool IsAlive => health > 0;
+    public bool IsDead => health <= 0;
 
     // get percentage of remaining health [0-1]
     public float PercentRemaining => maxHealth == 0 ? 0 : (health / (float)maxHealth);
@@ -25,7 +25,7 @@ public partial class HealthComponent : Node
             {
                 health = newHealth;
                 EmitSignal(SignalName.HealthChanged, Health);
-                if (!IsAlive)
+                if (IsDead)
                 {
                     EmitSignal(SignalName.Died);
                 }

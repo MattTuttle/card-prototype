@@ -9,7 +9,7 @@ public partial class CardChain : PanelContainer
     public delegate void OnChainExecutedEventHandler();
 
     [Export]
-    private HealthComponent enemyHealthComponent;
+    private EnemyList enemyList;
     [Export]
     private HealthComponent playerHealthComponent;
 
@@ -47,7 +47,7 @@ public partial class CardChain : PanelContainer
         switch (action)
         {
             case CardActionType.Attack:
-                enemyHealthComponent.Damage(power);
+                enemyList.DamageActiveTarget(power);
                 GD.Print($"Swing at enemy for {power}");
                 break;
             case CardActionType.Heal:

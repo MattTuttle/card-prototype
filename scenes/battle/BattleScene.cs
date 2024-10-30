@@ -1,5 +1,4 @@
 using Godot;
-using Game.Component;
 
 namespace Game.Battle;
 
@@ -8,18 +7,18 @@ public partial class BattleScene : Node
     [Signal]
     public delegate void EndTurnEventHandler();
 
+    private EnemyList enemyList;
     private Hand hand;
     private CardChain cardChain;
-    private HealthComponent playerHealthComponent;
-    private HealthComponent enemyHealthComponent;
+    private Actor player;
 
     public override void _Ready()
     {
         hand = GetNode<Hand>("%HandContainer");
         cardChain = GetNode<CardChain>("%CardChainContainer");
 
-        playerHealthComponent = GetNode<HealthComponent>("Player/HealthComponent");
-        enemyHealthComponent = GetNode<HealthComponent>("Enemy/HealthComponent");
+        player = GetNode<Actor>("Player");
+        enemyList = GetNode<EnemyList>("EnemyList");
 
         cardChain.OnChainExecuted += OnChainExecuted;
     }
@@ -31,15 +30,15 @@ public partial class BattleScene : Node
 
     private void OnChainExecuted()
     {
-        if (enemyHealthComponent.IsAlive) {
+        if (enemyList.AreAllDead) {
+            GD.Print("Battle won!");
+        } else {
+            // is end of player turn?
             if (hand.NumCardsInHand == 0) {
-                playerHealthComponent.Damage(2); // really stupid enemy damage
+                enemyList.TakeTurn();
                 EmitSignal(SignalName.EndTurn);
                 hand.DrawToHandLimit();
             }
-        } else {
-            // enemy is dead!
-            GD.Print("Battle won!");
         }
     }
 

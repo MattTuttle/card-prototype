@@ -3,15 +3,20 @@ using Game.Component;
 
 public partial class Actor : Node
 {
-    private HealthComponent healthComponent;
+    public HealthComponent HealthComponent;
     private Label healthLabel;
 
     public override void _Ready()
     {
-        healthComponent = GetNode<HealthComponent>("HealthComponent");
+        HealthComponent = GetNode<HealthComponent>("HealthComponent");
         healthLabel = GetNode<Label>("Label");
-        healthComponent.HealthChanged += OnHealthChanged;
-        OnHealthChanged(healthComponent.Health);
+        HealthComponent.HealthChanged += OnHealthChanged;
+        OnHealthChanged(HealthComponent.Health);
+    }
+
+    public void Damage(int amount)
+    {
+        HealthComponent.Damage(amount);
     }
 
     private void OnHealthChanged(int health)
