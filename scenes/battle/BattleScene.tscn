@@ -9,31 +9,40 @@
 script = ExtResource("1_r6il6")
 
 [node name="Player" parent="." instance=ExtResource("1_t5pxu")]
+offset_left = 610.0
+offset_top = 446.0
+offset_right = 610.0
+offset_bottom = 446.0
 
 [node name="Label" parent="Player" index="1"]
-offset_left = 606.0
-offset_top = 350.0
-offset_right = 646.0
-offset_bottom = 373.0
+layout_mode = 0
+offset_right = 17.0
 
 [node name="Enemy" parent="." instance=ExtResource("1_t5pxu")]
+offset_left = 610.0
+offset_top = 105.0
+offset_right = 610.0
+offset_bottom = 105.0
 
 [node name="HealthComponent" parent="Enemy" index="0"]
 MaxHealth = 16
 
 [node name="Label" parent="Enemy" index="1"]
-offset_left = 591.0
-offset_top = 43.0
-offset_right = 608.0
-offset_bottom = 66.0
+layout_mode = 0
+offset_right = 17.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -116.5
+offset_top = -382.0
+offset_right = 116.5
 grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

@@ -1,7 +1,7 @@
 using Godot;
 using Game.Component;
 
-public partial class Actor : Node2D
+public partial class Actor : Node
 {
     private HealthComponent healthComponent;
     private Label healthLabel;

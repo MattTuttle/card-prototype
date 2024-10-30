@@ -22,7 +22,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Card Chain"
+text = "Chain"
 
 [node name="ChainContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -33,7 +33,7 @@ theme_override_constants/separation = 32
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
 [node name="ExecuteButton" type="Button" parent="MarginContainer/VBoxContainer/ChainContainer"]
 unique_name_in_owner = true

@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://2fj0au6dsa2" path="res://scenes/component/HealthComponent.tscn" id="1_2t2rs"]
 [ext_resource type="Script" path="res://scenes/actor/Actor.cs" id="1_jlp8a"]
 
-[node name="Actor" type="Node2D"]
+[node name="Actor" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_jlp8a")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_2t2rs")]
