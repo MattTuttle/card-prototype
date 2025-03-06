@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://diyp1o81al2y4"]
 
-[ext_resource type="Script" path="res://scenes/battle/CardChain.cs" id="1_4toun"]
+[ext_resource type="Script" uid="uid://b7omdptna6xuq" path="res://scenes/battle/CardChain.cs" id="1_4toun"]
 
 [node name="CardChain" type="PanelContainer"]
 offset_right = 122.0

@@ -1,8 +1,9 @@
 [gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3 uid="uid://jbrllrxv8s70"]
 
-[ext_resource type="Script" path="res://resources/card/CardResource.cs" id="1_g2p7e"]
+[ext_resource type="Script" uid="uid://b3txf3h38hb60" path="res://resources/card/CardResource.cs" id="1_g2p7e"]
 
 [resource]
 script = ExtResource("1_g2p7e")
 DisplayName = "Dagger"
 Power = 1
+FinalAction = 0

@@ -1,7 +1,7 @@
 using Godot;
 using Game.Component;
 
-public partial class Actor : PanelContainer
+public partial class Actor : Control
 {
     [Signal]
     public delegate void SelectEventHandler(Actor self);

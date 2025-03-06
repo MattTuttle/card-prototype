@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://batdgudkkr2se"]
 
 [ext_resource type="PackedScene" uid="uid://cs08xuoqp71r0" path="res://scenes/card/Card.tscn" id="1_8c6up"]
-[ext_resource type="Script" path="res://scenes/battle/Hand.cs" id="1_jp1aj"]
+[ext_resource type="Script" uid="uid://coann6tfj6xil" path="res://scenes/battle/Hand.cs" id="1_jp1aj"]
 [ext_resource type="Resource" uid="uid://cdhrru1vnbqnf" path="res://resources/deck/starter_deck.tres" id="2_1fmpd"]
 
 [node name="Hand" type="PanelContainer"]

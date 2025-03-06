@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://jbrllrxv8s70" path="res://resources/card/dagger.tres" id="1_vs0jv"]
 [ext_resource type="Resource" uid="uid://vxv4dhrqm8t6" path="res://resources/card/fireball.tres" id="2_qsuk2"]
 [ext_resource type="Resource" uid="uid://d077o8yf48c27" path="res://resources/card/sword.tres" id="3_evdfi"]
-[ext_resource type="Script" path="res://resources/deck/DeckResource.cs" id="4_8mg16"]
+[ext_resource type="Script" uid="uid://bcmgwxekpttwt" path="res://resources/deck/DeckResource.cs" id="4_8mg16"]
 [ext_resource type="Resource" uid="uid://cs4cn40nwl4m4" path="res://resources/card/potion.tres" id="4_bqrg1"]
 
 [resource]
